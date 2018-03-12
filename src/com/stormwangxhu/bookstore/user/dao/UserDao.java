@@ -2,6 +2,7 @@ package com.stormwangxhu.bookstore.user.dao;
 
 import cn.itcast.jdbc.TxQueryRunner;
 import com.stormwangxhu.bookstore.user.domain.User;
+import com.stormwangxhu.bookstore.user.domain.UserException;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 
@@ -21,7 +22,7 @@ public class UserDao {
      * @param username
      * @return
      */
-    public User findByUsername(String username) {
+    public User findByUsername(String username) throws UserException{
         String sql = "select * from user where username =?";
         try {
             return queryRunner.query(sql, new BeanHandler<User>(User.class), username);
@@ -47,6 +48,7 @@ public class UserDao {
 
     /**
      * 完成添加用户
+     *
      * @param user
      */
     public void addUser(User user) {
@@ -54,7 +56,35 @@ public class UserDao {
         Object[] params = {user.getUid(), user.getUsername(), user.getPassword(),
                 user.getEmail(), user.getCode(), user.isState()};
         try {
-            queryRunner.update(sql,params);
+            queryRunner.update(sql, params);
+        } catch (SQLException e) {
+            throw new RuntimeException("添加用户失败！");
+        }
+    }
+
+    /**
+     * 按激活码查询
+     * @param code
+     * @return
+     */
+    public User findByCode(String code) {
+        String sql = "select * from user where code =?";
+        try {
+            return queryRunner.query(sql, new BeanHandler<User>(User.class), code);
+        } catch (SQLException e) {
+            throw new RuntimeException("查询失败！");
+        }
+    }
+
+    /**
+     * 修改指定用户的指定状态
+     * @param uid
+     * @param state
+     */
+    public void updateState(String uid,boolean state) {
+        String sql = "update user set state=? where uid=?";
+        try {
+            queryRunner.update(sql, state,uid);
         } catch (SQLException e) {
             throw new RuntimeException("添加用户失败！");
         }
