@@ -225,7 +225,21 @@ public class UserServlet extends HttpServlet {
             req.setAttribute("form",form);//为了回显
             return "f:/jsps/user/login.jsp";
         }
+    }
 
+    /**
+     * 退出功能
+     * @param req
+     * @param resp
+     * @return
+     * @throws ServletException
+     * @throws IOException
+     */
+    protected String quit(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
+        //退出功能，即销毁session
+        req.getSession().invalidate();//销毁
+        return "r:/index.jsp";
 
     }
 }
