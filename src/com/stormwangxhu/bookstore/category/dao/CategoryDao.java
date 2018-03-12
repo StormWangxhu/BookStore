@@ -14,16 +14,17 @@ import java.util.List;
  * @Date Created in 2018/3/12
  */
 public class CategoryDao {
-    QueryRunner queryRunner= new TxQueryRunner();
+    QueryRunner queryRunner = new TxQueryRunner();
 
     /**
-     * 查询所有
+     * 查询所有图书
+     *
      * @return
      */
-    public List<Category> findAll(){
-        String sql="select * from category";
+    public List<Category> findAll() {
+        String sql = "select * from category";
         try {
-            return queryRunner.query(sql,new BeanListHandler<Category>(Category.class));
+            return queryRunner.query(sql, new BeanListHandler<Category>(Category.class));
         } catch (SQLException e) {
             throw new RuntimeException("查询所有分类失败！");
         }
