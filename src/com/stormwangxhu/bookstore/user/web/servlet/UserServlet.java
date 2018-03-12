@@ -3,6 +3,7 @@ package com.stormwangxhu.bookstore.user.web.servlet;
 import cn.itcast.commons.CommonUtils;
 import cn.itcast.mail.Mail;
 import cn.itcast.mail.MailUtils;
+import cn.itcast.servlet.BaseServlet;
 import com.stormwangxhu.bookstore.user.domain.User;
 import com.stormwangxhu.bookstore.user.domain.UserException;
 import com.stormwangxhu.bookstore.user.service.UserService;
@@ -26,7 +27,7 @@ import java.util.Properties;
  * @Date Created in 2018/3/11
  */
 @WebServlet(name = "UserServlet")
-public class UserServlet extends HttpServlet {
+public class UserServlet extends BaseServlet {
     UserService userService = new UserService();
 
     /**
@@ -38,7 +39,7 @@ public class UserServlet extends HttpServlet {
      * @throws ServletException
      * @throws IOException
      */
-    protected String regist(HttpServletRequest req, HttpServletResponse resp)
+    public String regist(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         //封装表单数据到User对象中
         User form = CommonUtils.toBean(req.getParameterMap(), User.class);
@@ -152,7 +153,7 @@ public class UserServlet extends HttpServlet {
      * @throws ServletException
      * @throws IOException
      */
-    protected String active(HttpServletRequest req, HttpServletResponse resp)
+    public String active(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         /*
          * 1、获取表单中的激活码
@@ -178,7 +179,7 @@ public class UserServlet extends HttpServlet {
      * @throws ServletException
      * @throws IOException
      */
-    protected String login(HttpServletRequest req, HttpServletResponse resp)
+    public String login(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         /*
          * 1、封装表单数据到User中
@@ -235,7 +236,7 @@ public class UserServlet extends HttpServlet {
      * @throws ServletException
      * @throws IOException
      */
-    protected String quit(HttpServletRequest req, HttpServletResponse resp)
+    public String quit(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         //退出功能，即销毁session
         req.getSession().invalidate();//销毁
