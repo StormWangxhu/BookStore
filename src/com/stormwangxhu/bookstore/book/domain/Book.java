@@ -8,7 +8,7 @@ package com.stormwangxhu.bookstore.book.domain;
 public class Book {
     private String bid ;
     private String bname ;
-    private String price ;
+    private double price ;
 
     @Override
     public String toString() {
@@ -41,12 +41,12 @@ public class Book {
         this.image = image;
     }
 
-    public String getPrice() {
+    public double getPrice() {
 
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
