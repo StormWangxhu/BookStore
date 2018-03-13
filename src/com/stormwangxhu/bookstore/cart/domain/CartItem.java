@@ -23,9 +23,9 @@ public class CartItem {
      */
     public double getSubtotal() {
         //小计方法，但它没有对应成员
-        BigDecimal bigDecimal = new BigDecimal(book.getPrice() + "");
-        BigDecimal bigDecimal1 = new BigDecimal(count + "");
-        return bigDecimal.multiply(bigDecimal1).doubleValue();
+        BigDecimal price = new BigDecimal(book.getPrice() + "");
+        BigDecimal count1 = new BigDecimal(count + "");
+        return price.multiply(count1).doubleValue();
     }
 
     public int getCount() {

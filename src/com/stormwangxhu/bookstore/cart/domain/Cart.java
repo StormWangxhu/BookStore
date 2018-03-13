@@ -1,5 +1,6 @@
 package com.stormwangxhu.bookstore.cart.domain;
 
+import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -61,15 +62,19 @@ public class Cart {
 
     /**
      * 合计所有条目中书的总价钱。
-     * @return
+     *
+     * @return 处理二进制运算误差问题
      */
-    public double getTotal(){
+    public double getTotal() {
+
         //合计=所有条目的小计之和！
-        double total=0;
-        for (CartItem cartItem:map.values()){
-            total+=cartItem.getSubtotal();
+
+        BigDecimal total = new BigDecimal("0");//将a的字符串表示BigDecimal 转换为BigDecimal。
+        for (CartItem cartItem : map.values()) {
+            BigDecimal subtotal = new BigDecimal("" + cartItem.getSubtotal());
+            total = total.add(subtotal);//返回BigDecimal其值是(this + augend)
         }
-        return total;
+        return total.doubleValue();
     }
 
 

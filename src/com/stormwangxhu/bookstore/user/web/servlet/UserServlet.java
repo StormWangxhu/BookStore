@@ -4,6 +4,7 @@ import cn.itcast.commons.CommonUtils;
 import cn.itcast.mail.Mail;
 import cn.itcast.mail.MailUtils;
 import cn.itcast.servlet.BaseServlet;
+import com.stormwangxhu.bookstore.cart.domain.Cart;
 import com.stormwangxhu.bookstore.user.domain.User;
 import com.stormwangxhu.bookstore.user.domain.UserException;
 import com.stormwangxhu.bookstore.user.service.UserService;
@@ -218,6 +219,11 @@ public class UserServlet extends BaseServlet {
             User user=userService.login(form);
             //保存成功信息到session中
             req.getSession().setAttribute("session_user",user);
+            /*
+             * 给用户添加一个车，，即向session中一个Cart对象
+             */
+            req.getSession().setAttribute("cart",new Cart());
+
             //重定向到index.jsp
             return "r:/index.jsp";
         } catch (UserException e) {
