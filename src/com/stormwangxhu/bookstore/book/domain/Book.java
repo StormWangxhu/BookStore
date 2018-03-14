@@ -1,5 +1,7 @@
 package com.stormwangxhu.bookstore.book.domain;
 
+import com.stormwangxhu.bookstore.category.domain.Category;
+
 /**
  * @Description:
  * @Author StormWangxhu
@@ -9,20 +11,36 @@ public class Book {
     private String bid ;
     private String bname ;
     private double price ;
-
-    @Override
-    public String toString() {
-        return "Book{" +
-                "bid='" + bid + '\'' +
-                ", bname='" + bname + '\'' +
-                ", price='" + price + '\'' +
-                ", image='" + image + '\'' +
-                ", cid='" + cid + '\'' +
-                '}';
-    }
-
     private String image ;
     private String cid ;
+    private String author;
+    private boolean del;//表示图书是否删除
+
+    public boolean isDel() {
+        return del;
+    }
+
+    public void setDel(boolean del) {
+        this.del = del;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    private Category category;
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
 
     public String getCid() {
         return cid;
@@ -66,5 +84,16 @@ public class Book {
 
     public void setBid(String bid) {
         this.bid = bid;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "bid='" + bid + '\'' +
+                ", bname='" + bname + '\'' +
+                ", price='" + price + '\'' +
+                ", image='" + image + '\'' +
+                ", cid='" + cid + '\'' +
+                '}';
     }
 }
