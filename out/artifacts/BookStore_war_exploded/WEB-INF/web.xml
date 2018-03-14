@@ -8,9 +8,90 @@
         <servlet-name>UserServlet</servlet-name>
         <servlet-class>com.stormwangxhu.bookstore.user.web.servlet.UserServlet</servlet-class>
     </servlet>
-
+    <servlet>
+        <servlet-name>CategoryServlet</servlet-name>
+        <servlet-class>com.stormwangxhu.bookstore.category.web.servlet.CategoryServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>BookServlet</servlet-name>
+        <servlet-class>com.stormwangxhu.bookstore.book.web.servlet.BookServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CartServlet</servlet-name>
+        <servlet-class>com.stormwangxhu.bookstore.cart.web.servlet.CartServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>OrderServlet</servlet-name>
+        <servlet-class>com.stormwangxhu.bookstore.order.web.servlet.OrderServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminCategoryServlet</servlet-name>
+        <servlet-class>com.stormwangxhu.bookstore.category.web.servlet.admin.AdminCategoryServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminBookServlet</servlet-name>
+        <servlet-class>com.stormwangxhu.bookstore.book.web.servlet.admin.AdminBookServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminAddBookServlet</servlet-name>
+        <servlet-class>com.stormwangxhu.bookstore.book.web.servlet.admin.AdminAddBookServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UserServlet</servlet-name>
         <url-pattern>/UserServlet</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CategoryServlet</servlet-name>
+        <url-pattern>/CategoryServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BookServlet</servlet-name>
+        <url-pattern>/BookServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CartServlet</servlet-name>
+        <url-pattern>/CartServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>OrderServlet</servlet-name>
+        <url-pattern>/OrderServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminCategoryServlet</servlet-name>
+        <url-pattern>/admin/AdminCategoryServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminBookServlet</servlet-name>
+        <url-pattern>/admin/AdminBookServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminAddBookServlet</servlet-name>
+        <url-pattern>/admin/AdminAddBookServlet</url-pattern>
+    </servlet-mapping>
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+
+    <filter>
+        <display-name>LoginFilter</display-name>
+        <filter-name>LoginFilter</filter-name>
+        <filter-class>com.stormwangxhu.bookstore.user.web.filter.LoginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <url-pattern>/jsps/cart/*</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <url-pattern>/jsps/order/*</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <servlet-name>CartServlet</servlet-name>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <servlet-name>OrderServlet</servlet-name>
+    </filter-mapping>
 </web-app>

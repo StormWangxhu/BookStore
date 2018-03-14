@@ -32,51 +32,14 @@
   </head>
   
   <body>
+<c:forEach items="${bookList }" var="book">
    <div class="icon">
-    <a href="<c:url value='/adminjsps/admin/book/desc.jsp'/>"><img src="<c:url value='/book_img/8758723-1_l.jpg'/>" border="0"/></a>
+    <a href="<c:url value='/admin/AdminBookServlet?method=load&bid=${book.bid }'/>"><img src="<c:url value='/${book.image }'/>" border="0"/></a>
       <br/>
-   	<a href="<c:url value='/adminjsps/admin/book/desc.jsp'/>">Java就业培训教程</a>
+   	<a href="<c:url value='/admin/AdminBookServlet?method=load&bid=${book.bid }'/>">${book.bname }</a>
   </div>
-   <div class="icon">
-    <a href="<c:url value='/adminjsps/admin/book/desc.jsp'/>"><img src="<c:url value='/book_img/8991366-1_l.jpg'/>" border="0"/></a>
-      <br/>
-   	<a href="<c:url value='/adminjsps/admin/book/desc.jsp'/>">精通Hibernate</a>
-  </div>
-   <div class="icon">
-    <a href="<c:url value='/adminjsps/admin/book/desc.jsp'/>"><img src="<c:url value='/book_img/9265169-1_l.jpg'/>" border="0"/></a>
-      <br/>
-   	<a href="<c:url value='/adminjsps/admin/book/desc.jsp'/>">Head First java</a>
-  </div>
-   <div class="icon">
-    <a href="<c:url value='/adminjsps/admin/book/desc.jsp'/>"><img src="<c:url value='/book_img/9317290-1_l.jpg'/>" border="0"/></a>
-      <br/>
-   	<a href="<c:url value='/adminjsps/admin/book/desc.jsp'/>">Java编程思想（第4版）</a>
-  </div>
-   <div class="icon">
-    <a href="<c:url value='/adminjsps/admin/book/desc.jsp'/>"><img src="<c:url value='/book_img/20029394-1_l.jpg'/>" border="0"/></a>
-      <br/>
-   	<a href="<c:url value='/adminjsps/admin/book/desc.jsp'/>">精通Spring2.x </a>
-  </div>
-   <div class="icon">
-    <a href="<c:url value='/adminjsps/admin/book/desc.jsp'/>"><img src="<c:url value='/book_img/20285763-1_l.jpg'/>" border="0"/></a>
-      <br/>
-   	<a href="<c:url value='/adminjsps/admin/book/desc.jsp'/>">Java核心技术卷1</a>
-  </div>
-   <div class="icon">
-    <a href="<c:url value='/adminjsps/admin/book/desc.jsp'/>"><img src="<c:url value='/book_img/20385925-1_l.jpg'/>" border="0"/></a>
-      <br/>
-   	<a href="<c:url value='/adminjsps/admin/book/desc.jsp'/>">Struts2深入详解</a>
-  </div>
-   <div class="icon">
-    <a href="<c:url value='/adminjsps/admin/book/desc.jsp'/>"><img src="<c:url value='/book_img/22722790-1_l.jpg'/>" border="0"/></a>
-      <br/>
-   	<a href="<c:url value='/adminjsps/admin/book/desc.jsp'/>">Javascript权威指南</a>
-  </div>
-   <div class="icon">
-    <a href="<c:url value='/adminjsps/admin/book/desc.jsp'/>"><img src="<c:url value='/book_img/22788412-1_l.jpg'/>" border="0"/></a>
-      <br/>
-   	<a href="<c:url value='/adminjsps/admin/book/desc.jsp'/>">JavaWeb开发详解</a>
-  </div>
+</c:forEach>
+  
   
   </body>
  
